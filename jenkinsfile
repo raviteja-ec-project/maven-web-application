@@ -24,8 +24,8 @@ stage ('deploying to tomcat')
 sshagent(['50ce4ff7-b567-4918-8047-50100a26465b']) {
 sh "scp -o StrictHostKeyChecking=no target/maven-web-application.war ec2-user@65.2.125.17:/opt/apache-tomcat-9.0.45/webapps/"
 }
-*/
 }
+*/
 stage('extended email')
 {
 emailext body: 'Buildover', subject: 'Buildover', to: 'ravicart01@gmail.com'
