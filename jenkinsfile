@@ -2,9 +2,10 @@ node
 {
 def mavenhome = tool name: "maven3.6.2"
 properties([pipelineTriggers([pollSCM('* * * * *')])])
+parameters: [choice(choices: ['stage', 'uat', 'development', 'qa'], description: 'branch name', name: 'name')]
 stage('codecheckout')
 {
-    git branch: 'development', url: 'https://github.com/raviteja-ec-project/maven-web-application.git'
+    git branch: '$name', url: 'https://github.com/raviteja-ec-project/maven-web-application.git'
 }
 stage ('build')
 {
